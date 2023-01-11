@@ -1,16 +1,16 @@
 import {
   CreateDateColumn,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+  UpdateDateColumn
+} from 'typeorm'
 
 export class TableBase {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: number
 
   @CreateDateColumn()
-  dateCreation: Date;
+  dateCreation: Date
 
   @UpdateDateColumn()
-  dateModification: Date;
+  dateModification: Date
 }

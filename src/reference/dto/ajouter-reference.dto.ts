@@ -1,15 +1,15 @@
-import { IsNotEmpty, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsOptional } from 'class-validator'
 
 export class AjouterReferenceDto {
   @IsNotEmpty()
-  titre: string;
+  titre: string
 
   @IsNotEmpty()
-  code: string;
+  code: string
 
   @IsNotEmpty()
-  idCategorie;
+  idCategorie
 
   @IsOptional()
-  auteur: string;
+  auteur: string
 }

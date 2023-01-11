@@ -1,18 +1,18 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { CategorieManagerService } from './categorie-manager.service';
+import { Test, TestingModule } from '@nestjs/testing'
+import { CategorieManagerService } from './categorie-manager.service'
 
 describe('CategorieManagerService', () => {
-  let service: CategorieManagerService;
+  let service: CategorieManagerService
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [CategorieManagerService],
-    }).compile();
+      providers: [ CategorieManagerService ]
+    }).compile()
 
-    service = module.get<CategorieManagerService>(CategorieManagerService);
-  });
+    service = module.get<CategorieManagerService>(CategorieManagerService)
+  })
 
   it('should be defined', () => {
-    expect(service).toBeDefined();
-  });
-});
+    expect(service).toBeDefined()
+  })
+})
