@@ -2,18 +2,18 @@ import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm'
 import { Categorie } from './Categorie'
 import { TableBase } from './TableBase'
 
-@Entity({ schema: 'stock-biblio', name: 'reference' })
-export class Reference extends TableBase {
+@Entity({ schema: 'stock-biblio', name: 'article' })
+export class Article extends TableBase {
   @Column()
   titre: string
 
-  @Column({ nullable: true })
-  auteur: string
+  @Column({ name : 'codereference' })
+  codeReference: string
 
-  @Column()
-  code: string
+  @Column({ name : 'prixunitaire' })
+  prixUnitaire : number
 
-  @Column({ name: 'idcategorie' })
+  @Column({ name: 'idcategorie', type: 'float' })
   idCategorie: number
 
   @ManyToOne(() => Categorie, (categorie) => categorie.id)

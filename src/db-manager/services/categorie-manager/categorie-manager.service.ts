@@ -34,7 +34,15 @@ export class CategorieManagerService {
   public async modifier (id: number, oDonnee: Partial<Categorie>,): Promise<Categorie> {
     delete oDonnee.id
     oDonnee.id = id
-    const categorie = this._repo.create(oDonnee)
+    return this._repo.save(oDonnee)
+  }
+
+  public async supprimer (id : number) : Promise<Categorie> {
+    await this.lecture(id)
+    const categorie : Partial<Categorie> = {
+      id,
+      dateSuppression : new Date()
+    }
     return this._repo.save(categorie)
   }
 }

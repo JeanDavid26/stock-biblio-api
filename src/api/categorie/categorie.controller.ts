@@ -23,10 +23,8 @@ export class CategorieController {
   }
 
   @Put(':id')
-  public modifier (
-    @Param('id') id: number,
-    @Body() oDonnee: AjouterCategorieDto,
-  ): Promise<Categorie> {
-    return this._categorieManagerService.modifier(id, oDonnee)
+  public modifier (@Param('id') id: number, @Body() oDonnee: AjouterCategorieDto): Promise<Categorie> {
+    console.log(id)
+    return this._categorieManagerService.modifier(parseInt(id as any), oDonnee)
   }
 }

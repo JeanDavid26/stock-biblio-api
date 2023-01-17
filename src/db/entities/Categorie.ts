@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany } from 'typeorm'
-import { Reference } from './Reference'
+import { Article } from './Article'
 import { TableBase } from './TableBase'
 
 @Entity({ schema: 'stock-biblio', name: 'categorie' })
@@ -7,6 +7,6 @@ export class Categorie extends TableBase {
   @Column()
   designation: string
 
-  @OneToMany(() => Reference, (reference) => reference.oCategorie)
-  tReference: Reference[]
+  @OneToMany(() => Article, (article) => article.oCategorie)
+  tReference: Article[]
 }

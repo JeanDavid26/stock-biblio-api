@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common'
 import { SharedModule } from 'src/shared/shared.module'
-import { ReferenceController } from './reference.controller'
+import { ArticleController } from './article.controller'
 
 @Module({
-  controllers: [ ReferenceController ],
+  controllers: [ ArticleController ],
   imports: [ SharedModule ]
 })
-export class ReferenceModule {}
+export class ArticleModule {}

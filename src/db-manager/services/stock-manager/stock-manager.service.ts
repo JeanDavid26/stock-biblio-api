@@ -1,0 +1,51 @@
+import { Injectable, NotFoundException } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Stock } from 'src/db/entities/Stock'
+import { Repository } from 'typeorm'
+
+@Injectable()
+export class StockManagerService {
+
+  constructor (
+    @InjectRepository(Stock) private _repo: Repository<Stock>,
+  ) {}
+    
+  public async lecture (id: number): Promise<Stock> {
+    const stock = await this._repo.findOne({
+      where: {
+        id
+      },
+      relations : [ 'oCategorie' ]
+    })
+    
+    if (!stock) {
+      throw new NotFoundException()
+    }
+    return stock
+  }
+    
+  public async lister (): Promise<Stock[]> {
+    return this._repo.find({
+      relations : [ 'oArticle' ]
+    })
+  }
+    
+  public async ajouter (oDonnee: Partial<Stock>): Promise<Stock> {
+    return this._repo.save(oDonnee)
+  }
+    
+  public async modifier (id: number, oDonnee: Partial<Stock>): Promise<Stock> {
+    delete oDonnee.id
+    oDonnee.id = id
+    return this._repo.save(oDonnee)
+  }
+
+  public async supprimer (id : number) : Promise<Stock> {
+    await this.lecture(id)
+    const categorie : Partial<Stock> = {
+      id,
+      dateSuppression : new Date()
+    }
+    return this._repo.save(categorie)
+  }
+}
