@@ -42,10 +42,9 @@ export class ArticleManagerService {
 
   public async supprimer (id : number) : Promise<Article> {
     await this.lecture(id)
-    const categorie : Partial<Article> = {
+    return this._repo.save({
       id,
-      dateSuppression : new Date()
-    }
-    return this._repo.save(categorie)
+      dateSuppression: new Date()
+    })
   }
 }

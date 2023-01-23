@@ -24,6 +24,6 @@ import { StockItem } from 'src/db/entities/StockItem'
     TypeOrmModule.forFeature([ Article, Categorie, Stock, StockItem ])
   ],
   providers: [ ArticleManagerService, CategorieManagerService, StockManagerService, StockItemManagerService ],
-  exports: [ ArticleManagerService, CategorieManagerService ]
+  exports: [ ArticleManagerService, CategorieManagerService, StockItemManagerService, StockManagerService ]
 })
 export class DbManagerModule {}

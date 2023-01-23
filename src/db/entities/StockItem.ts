@@ -8,7 +8,7 @@ export class StockItem extends TableBase {
   @Column({ name : 'dateimport', type : 'date' })
   dateImport : Date
 
-  @Column({ name : 'datevente', type : 'date' })
+  @Column({ name : 'datevente', type : 'date', nullable : true })
   dateVente : Date
 
   @Column({ name : 'idstock' })

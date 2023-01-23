@@ -14,8 +14,7 @@ export class StockManagerService {
     const stock = await this._repo.findOne({
       where: {
         id
-      },
-      relations : [ 'oCategorie' ]
+      }
     })
     
     if (!stock) {
@@ -26,7 +25,6 @@ export class StockManagerService {
     
   public async lister (): Promise<Stock[]> {
     return this._repo.find({
-      relations : [ 'oArticle' ]
     })
   }
     
@@ -42,10 +40,10 @@ export class StockManagerService {
 
   public async supprimer (id : number) : Promise<Stock> {
     await this.lecture(id)
-    const categorie : Partial<Stock> = {
+    const stock : Partial<Stock> = {
       id,
       dateSuppression : new Date()
     }
-    return this._repo.save(categorie)
+    return this._repo.save(stock)
   }
 }

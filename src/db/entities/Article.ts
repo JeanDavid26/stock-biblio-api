@@ -10,10 +10,10 @@ export class Article extends TableBase {
   @Column({ name : 'codereference' })
   codeReference: string
 
-  @Column({ name : 'prixunitaire' })
+  @Column({ name : 'prixunitaire', type : 'double precision' })
   prixUnitaire : number
 
-  @Column({ name: 'idcategorie', type: 'float' })
+  @Column({ name: 'idcategorie' })
   idCategorie: number
 
   @ManyToOne(() => Categorie, (categorie) => categorie.id)

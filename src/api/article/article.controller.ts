@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
 import { ArticleManagerService } from 'src/db-manager/services/article-manager/article-manager.service'
 import { Article } from 'src/db/entities/Article'
 import { AjouterArticleDto } from './dto/ajouter-article.dto'
@@ -25,5 +25,10 @@ export class ArticleController {
   @Put(':id')
   public modifier (@Param('id') id: number, @Body() oDonnee: AjouterArticleDto): Promise<Article> {
     return this._articleManagerService.modifier(id, oDonnee)
+  }
+
+  @Delete(':id')
+  public supprimer (@Param('id') id : number) : Promise<Article> {
+    return this._articleManagerService.supprimer(id)
   }
 }
