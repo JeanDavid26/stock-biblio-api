@@ -1,9 +1,6 @@
-import { IsDate, IsNotEmpty, IsNumber } from 'class-validator'
+import { IsNotEmpty, IsNumber } from 'class-validator'
 
 export class AjoutStockItemDto {
-  @IsNotEmpty()
-  @IsDate()
-  dateImport : Date
 
   @IsNotEmpty()
   @IsNumber()
@@ -11,4 +8,7 @@ export class AjoutStockItemDto {
     
   @IsNotEmpty()
   idArticle : number
+
+  @IsNotEmpty()
+  idImport : number
 }
